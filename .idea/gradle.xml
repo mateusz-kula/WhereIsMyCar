@@ -8,10 +8,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/instantapp" />
             <option value="$PROJECT_DIR$/instantfeature" />
+            <option value="$PROJECT_DIR$/whereismycar" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
