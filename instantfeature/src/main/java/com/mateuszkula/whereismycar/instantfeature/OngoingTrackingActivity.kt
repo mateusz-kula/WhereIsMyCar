@@ -28,5 +28,4 @@ class OngoingTrackingActivity : AppCompatActivity() {
         latitudeView.setText(latitude.toString())
         longitudeView.setText(longitude.toString())
     }
-
 }
