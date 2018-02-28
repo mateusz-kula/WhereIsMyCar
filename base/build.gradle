@@ -22,4 +22,5 @@ dependencies {
     api 'com.android.support.constraint:constraint-layout:1.0.2'
     application project(':whereismycar')
     feature project(':instantfeature')
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
 }

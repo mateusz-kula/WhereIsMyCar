@@ -3,13 +3,15 @@ package com.mateuszkula.whereismycar.instantfeature
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.content.SharedPreferences
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import kotlinx.android.synthetic.main.activity_ongoingtracking.*
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.LatLng
 
-/**
- * Created by mateusz.kula on 1/24/18.
- */
-
-class OngoingTrackingActivity : AppCompatActivity() {
+class OngoingTrackingActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private val PREFS_FILENAME = "abc"
 
@@ -27,5 +29,15 @@ class OngoingTrackingActivity : AppCompatActivity() {
 
         latitudeView.setText(latitude.toString())
         longitudeView.setText(longitude.toString())
+
+        val mapFragment = supportFragmentManager
+                .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        val sydney = LatLng(-34.0, 151.0)
+        map.addMarker(MarkerOptions().position(sydney).title("Sydney"))
+        map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 }
