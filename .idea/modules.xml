@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/WhereIsMyCar.iml" filepath="$PROJECT_DIR$/WhereIsMyCar.iml" />
-      <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
-      <module fileurl="file://$PROJECT_DIR$/instantapp/instantapp.iml" filepath="$PROJECT_DIR$/instantapp/instantapp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/instantfeature/instantfeature.iml" filepath="$PROJECT_DIR$/instantfeature/instantfeature.iml" />
-      <module fileurl="file://$PROJECT_DIR$/whereismycar/whereismycar.iml" filepath="$PROJECT_DIR$/whereismycar/whereismycar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
