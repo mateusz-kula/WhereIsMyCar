@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WhereIsMyCar</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="leaving_car">Leaving car</string>
+</resources>
