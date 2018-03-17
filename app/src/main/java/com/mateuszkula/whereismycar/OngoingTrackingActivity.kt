@@ -10,6 +10,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import kotlinx.android.synthetic.main.activity_ongoingtracking.*
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 
 class OngoingTrackingActivity : FragmentActivity(), OnMapReadyCallback {
 
@@ -38,8 +39,20 @@ class OngoingTrackingActivity : FragmentActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(map: GoogleMap) {
-        val sydney = LatLng(latitude!!.toDouble(), longitude!!.toDouble())
-        map.addMarker(MarkerOptions().position(sydney).title("Tracking"))
-        map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val position = LatLng(latitude!!.toDouble(), longitude!!.toDouble())
+
+        try {
+            map.isMyLocationEnabled = true
+        }
+        catch (ex: SecurityException) {
+
+        }
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL)
+        map.animateCamera(CameraUpdateFactory.newLatLngBounds(
+                LatLngBounds(
+                        LatLng(position.latitude - 1, position.longitude - 1),
+                        LatLng(position.latitude + 1, position.longitude + 1)), 50))
+
+        map.addMarker(MarkerOptions().position(position).title("Tracking"))
     }
 }
