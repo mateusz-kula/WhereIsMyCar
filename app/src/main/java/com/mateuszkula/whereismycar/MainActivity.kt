@@ -14,7 +14,8 @@ class MainActivity : Activity() {
     private val PREFS_FILENAME = "abc"
     private var sharedPreferences : SharedPreferences? = null
 
-    @Inject lateinit var locationManager: LocationManager
+    @Inject
+    private lateinit var locationManager: LocationManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

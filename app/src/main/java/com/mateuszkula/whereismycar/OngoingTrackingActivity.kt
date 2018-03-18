@@ -29,7 +29,7 @@ class OngoingTrackingActivity : FragmentActivity(), OnMapReadyCallback {
     var TAG = OngoingTrackingActivity::class.java.name
 
     @Inject
-    lateinit var locationManager : LocationManager
+    private lateinit var locationManager : LocationManager
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
