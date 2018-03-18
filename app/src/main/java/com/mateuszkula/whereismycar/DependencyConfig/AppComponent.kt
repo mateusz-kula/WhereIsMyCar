@@ -1,5 +1,7 @@
-package com.mateuszkula.whereismycar
+package com.mateuszkula.whereismycar.DependencyConfig
 
+import com.mateuszkula.whereismycar.Activities.MainActivity
+import com.mateuszkula.whereismycar.Activities.OngoingTrackingActivity
 import dagger.Component
 import javax.inject.Singleton
 

@@ -17,15 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".WhereIsMyCarApp">
-        <activity android:name=".MainActivity">
+        android:name=".DependencyConfig.WhereIsMyCarApp">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OngoingTrackingActivity">
+        <activity android:name=".Activities.OngoingTrackingActivity">
             <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 

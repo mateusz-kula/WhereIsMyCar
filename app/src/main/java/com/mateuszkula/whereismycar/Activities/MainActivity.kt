@@ -1,10 +1,12 @@
-package com.mateuszkula.whereismycar
+package com.mateuszkula.whereismycar.Activities
 
 import android.app.PendingIntent
 import android.content.SharedPreferences
 import android.location.LocationManager
 import android.os.Bundle
 import android.app.*
+import com.mateuszkula.whereismycar.R
+import com.mateuszkula.whereismycar.DependencyConfig.WhereIsMyCarApp
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.*
 import javax.inject.Inject

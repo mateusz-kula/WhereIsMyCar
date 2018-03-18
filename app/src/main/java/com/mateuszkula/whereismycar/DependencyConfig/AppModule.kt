@@ -1,4 +1,4 @@
-package com.mateuszkula.whereismycar
+package com.mateuszkula.whereismycar.DependencyConfig
 
 import android.content.Context
 import android.content.SharedPreferences

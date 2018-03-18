@@ -1,4 +1,4 @@
-package com.mateuszkula.whereismycar
+package com.mateuszkula.whereismycar.Activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -16,6 +16,8 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.util.Log
+import com.mateuszkula.whereismycar.R
+import com.mateuszkula.whereismycar.DependencyConfig.WhereIsMyCarApp
 import javax.inject.Inject
 
 class OngoingTrackingActivity : FragmentActivity(), OnMapReadyCallback {
