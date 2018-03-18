@@ -1,6 +1,7 @@
 package com.mateuszkula.whereismycar
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.location.LocationManager
 import dagger.Module
 import dagger.Provides
@@ -13,5 +14,10 @@ class AppModule(private val application: WhereIsMyCarApp) {
     @Singleton
     fun provideLocationManager(): LocationManager =
             application.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences() : SharedPreferences =
+            application.getSharedPreferences("COMMON", 0)
 
 }

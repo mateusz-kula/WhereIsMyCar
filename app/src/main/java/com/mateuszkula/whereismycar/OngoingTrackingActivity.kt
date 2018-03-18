@@ -20,16 +20,16 @@ import javax.inject.Inject
 
 class OngoingTrackingActivity : FragmentActivity(), OnMapReadyCallback {
 
-    private val PREFS_FILENAME = "abc"
-
-    var sharedPreferences : SharedPreferences? = null
-    var latitude : Float? = null
-    var longitude: Float? = null
-
-    var TAG = OngoingTrackingActivity::class.java.name
+    val tag : String = OngoingTrackingActivity::class.java.name
 
     @Inject
-    private lateinit var locationManager : LocationManager
+    lateinit var locationManager : LocationManager
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    var latitude : Float? = null
+    var longitude: Float? = null
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +40,7 @@ class OngoingTrackingActivity : FragmentActivity(), OnMapReadyCallback {
 
         // Register for location updates
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            Log.d(TAG, "GPS is enabled")
+            Log.d(tag, "GPS is enabled")
             locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,
                     1000,
@@ -53,27 +53,22 @@ class OngoingTrackingActivity : FragmentActivity(), OnMapReadyCallback {
                         override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
 
                         override fun onLocationChanged(location: Location) {
-                            Log.i(TAG, "${location.longitude.toString()} ${location.latitude.toString()}")
+                            Log.i(tag, "${location.longitude} ${location.latitude}")
                         }
                     }
             )
         }
         // -----------------------
 
-        sharedPreferences = getSharedPreferences(PREFS_FILENAME, 0)
+        longitude = sharedPreferences.getFloat("longitude", 0f)
+        latitude = sharedPreferences.getFloat("latitude", 0f)
 
-        longitude = sharedPreferences!!.getFloat("longitude", 0f)
-        latitude = sharedPreferences!!.getFloat("latitude", 0f)
+        latitudeView.text = latitude.toString()
+        longitudeView.text = longitude.toString()
 
-        latitudeView.setText(latitude.toString())
-        longitudeView.setText(longitude.toString())
-
-        val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.map) as SupportMapFragment
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
-
-
 
     override fun onMapReady(map: GoogleMap) {
         val position = LatLng(latitude!!.toDouble(), longitude!!.toDouble())
