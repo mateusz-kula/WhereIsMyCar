@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.location.LocationManager
 import android.os.Bundle
 import android.app.*
+import android.view.View
 import com.mateuszkula.whereismycar.R
 import com.mateuszkula.whereismycar.DependencyConfig.WhereIsMyCarApp
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,26 +29,29 @@ class MainActivity : Activity() {
         var initialRequest = 1337
         requestPermissions(permissions, initialRequest)
 
-        startButton.setOnClickListener {
-            try {
-                val intent = intentFor<MainActivity>()
-                var pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_CANCEL_CURRENT)
-                locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER, pendingIntent)
+        startButton.setOnClickListener(startClickedListener)
+    }
 
-                var location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-                var latitude = location.latitude
-                var longitude = location.longitude
+    var startClickedListener = View.OnClickListener {
 
-                var editor = sharedPreferences.edit()
-                editor.putFloat("longitude", longitude.toFloat())
-                editor.putFloat("latitude", latitude.toFloat())
-                editor.apply()
+        try {
+            val intent = intentFor<MainActivity>()
+            var pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+            locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER, pendingIntent)
 
-            } catch(ex: SecurityException) {
-                // Location is not available
-            }
+            var location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            var latitude = location.latitude
+            var longitude = location.longitude
 
-            startActivity<OngoingTrackingActivity>()
+            var editor = sharedPreferences.edit()
+            editor.putFloat("longitude", longitude.toFloat())
+            editor.putFloat("latitude", latitude.toFloat())
+            editor.apply()
+
+        } catch(ex: SecurityException) {
+            // Location is not available
         }
+
+        startActivity<OngoingTrackingActivity>()
     }
 }
